@@ -4,7 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-Vue.config.productionTip = false
+import 'vue-area-linkage/dist/index.css';
+import VueAreaLinkage from 'vue-area-linkage';
+Vue.use(VueAreaLinkage);
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

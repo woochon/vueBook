@@ -10,7 +10,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "area-data": "^5.0.6",
+    "better-scroll": "^1.15.1",
     "vue": "^2.5.2",
+    "vue-area-linkage": "^5.1.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

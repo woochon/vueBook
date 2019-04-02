@@ -8,6 +8,10 @@ import Date from '../views/date'
 import Tabs from '../views/tabs'
 import Page from '../views/myPage'
 import myImg from '../views/img'
+import Area from '../views/dataArea'
+import showModel from '../views/showModal'
+import showScroll from '../views/showScroll'
+import shopCart1 from '../views/shopCart1'
 
 Vue.use(Router);
 
@@ -52,6 +56,26 @@ export default new Router({
       path:'/img',
       name:'img',
       component:myImg
+    },
+    {
+      path:'/area',
+      name:'area',
+      component:Area
+    },
+    {
+      path:'/showModel',
+      name:'showModel',
+      component:showModel
+    },
+    {
+      path:'/showScroll',
+      name:'showScroll',
+      component:showScroll
+    },
+    {
+      path:'/shopCart1',
+      name:'shopCart1',
+      component:shopCart1
     },
   ]
 })

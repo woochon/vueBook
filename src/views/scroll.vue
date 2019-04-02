@@ -65,7 +65,7 @@
   /* 滚动到指定的元素 */
   import {scroll} from '../common/js/compatibility'
   export default{
-    name:'scroll',
+    name:'scrollCus',
     data(){
       return {
         msg:'test'
