@@ -12,6 +12,8 @@ import Area from '../views/dataArea'
 import showModel from '../views/showModal'
 import showScroll from '../views/showScroll'
 import shopCart1 from '../views/shopCart1'
+import showSelect from '../views/showSelect'
+import showInputNumber from '../views/showInputNumber'
 
 Vue.use(Router);
 
@@ -76,6 +78,16 @@ export default new Router({
       path:'/shopCart1',
       name:'shopCart1',
       component:shopCart1
+    },
+    {
+      path:'/showSelect',
+      name:'showSelect',
+      component:showSelect
+    },
+    {
+      path:'/showInputNumber',
+      name:'showInputNumber',
+      component:showInputNumber
     },
   ]
 })
