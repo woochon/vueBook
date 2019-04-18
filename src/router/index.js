@@ -12,6 +12,7 @@ import Area from '../views/dataArea'
 import showModel from '../views/showModal'
 import showScroll from '../views/showScroll'
 import shopCart1 from '../views/shopCart1'
+import shopCart2 from '../views/shopCart2'
 
 Vue.use(Router);
 
@@ -76,6 +77,11 @@ export default new Router({
       path:'/shopCart1',
       name:'shopCart1',
       component:shopCart1
+    },
+    {
+      path:'/shopCart2',
+      name:'shopCart2',
+      component:shopCart2
     },
   ]
 })

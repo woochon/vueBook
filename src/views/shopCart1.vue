@@ -95,18 +95,13 @@
       },
       removeGood(index){
         this.goodList.splice(index,1);
-        console.log(this.goodList);
         this.total = this.getTotal();
       },
-      handleChange(index){
-        let flag = false;
-        this.goodList.forEach((item)=>{
-          /* 全选框的状态 */
-          if(item.select){
-            flag = true;
-          }
+      handleChange(){
+        /* 全选框的状态 */
+        this.selectAll=this.goodList.every((item)=>{
+          return item.selected;
         });
-        this.selectAll = flag;
         this.total = this.getTotal();
       },
       getTotal(){

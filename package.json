@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "area-data": "^5.0.6",
+    "axios": "^0.18.0",
     "better-scroll": "^1.15.1",
     "vue": "^2.5.2",
     "vue-area-linkage": "^5.1.0",

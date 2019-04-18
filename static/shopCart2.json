@@ -1,0 +1,90 @@
+[
+  {
+    "shopName":"大胖的店",
+    "shopNameId":1,
+    "selectGoods":[
+      {
+        "name" : "康师傅",
+        "price" : 23.00,
+        "realStock" : 10,
+        "fare" : 1.5,
+        "num" : 1
+      },
+      {
+        "name" : "今麦郎",
+        "price" : 26.00,
+        "realStock" : 2,
+        "fare" : 1.5,
+        "num" : 2
+      },
+      {
+        "name" : "比巴卜",
+        "price" : 88.00,
+        "realStock" : 8,
+        "fare" : 1.5,
+        "num" : 4
+      }
+    ]
+  },
+  {
+    "shopName":"二胖的店",
+    "shopNameId":2,
+    "selectGoods":[
+      {
+        "name" : "好看的鞋子",
+        "price" : 23.00,
+        "realStock" : 7,
+        "fare" : 2,
+        "num" : 1
+      },
+      {
+        "name" : "好看的裙子",
+        "price" : 88.00,
+        "realStock" : 10,
+        "fare" : 2,
+        "num" : 5
+      },
+      {
+        "name" : "好看的短袖",
+        "price" : 52.00,
+        "realStock" : 3,
+        "fare" : 1,
+        "num" : 2
+      }
+    ]
+  },
+  {
+    "shopName":"胖胖的店",
+    "shopNameId":3,
+    "selectGoods":[
+      {
+        "name" : "福满多1号",
+        "price" : 26.00,
+        "realStock" : 10,
+        "fare" : 1.5,
+        "num" : 2
+      },
+      {
+        "name" : "福满多2号",
+        "price" : 2.00,
+        "realStock" : 2,
+        "fare" : 1.5,
+        "num" : 2
+      },
+      {
+        "name" : "福满多3号",
+        "price" : 88.00,
+        "realStock" : 8,
+        "fare" : 1.5,
+        "num" : 3
+      },
+      {
+        "name" : "经典卫龙辣条",
+        "price" : 3.00,
+        "realStock" : 8,
+        "fare" : 1.5,
+        "num" : 30
+      }
+    ]
+  }
+]
