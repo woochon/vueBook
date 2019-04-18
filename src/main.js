@@ -10,6 +10,18 @@ Vue.use(VueAreaLinkage);
 
 Vue.config.productionTip = false;
 
+router.beforeEach((to,from,next)=>{
+  console.log('123456');
+  if(!localStorage.getItem('token')){
+    if(!to.matched.some(record => record.meta.requiresAuth)){
+      next();
+    }
+    else{
+      next({path:'/login'})
+    }
+  }
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

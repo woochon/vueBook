@@ -183,12 +183,25 @@
   .page>div>select{
     padding:0 2px;
     height:32px;
+    outline: none;
+    border: 1px solid #ccc;
+  }
+  .page>div>select:active,.page>div>select:focus{
+    border: 1px solid blue;
   }
   .page>div>.jump>input{
     width:45px;
     height:24px;
     line-height:24px;
     text-align: center;
+    outline: none;
+    border: 1px solid #ccc;
+  }
+  .page>div>.jump>input:active{
+    border: 1px solid blue;
+  }
+  .page>div>.jump>input:focus{
+    border: 1px solid blue;
   }
   ul{
     height:30px;

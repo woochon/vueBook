@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '../views/HelloWorld'
+import Home from '../views/home'
+import Login from '../views/login'
 import Throttle from '../views/throttle'
 import Directive from '../views/directive'
 import Scroll from '../views/scroll'
@@ -13,6 +14,9 @@ import showModel from '../views/showModal'
 import showScroll from '../views/showScroll'
 import shopCart1 from '../views/shopCart1'
 import shopCart2 from '../views/shopCart2'
+import showSelect from '../views/showSelect'
+import showInputNumber from '../views/showInputNumber'
+
 
 Vue.use(Router);
 
@@ -20,8 +24,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: home
+      name: 'login',
+      redirect:'/login'
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
     },
     {
       path:'/throttle',
@@ -31,22 +45,34 @@ export default new Router({
     {
       path:'/directive',
       name:'directive',
-      component:Directive
+      component:Directive,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/scroll',
       name:'scroll',
-      component:Scroll
+      component:Scroll,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/date',
       name:'date',
-      component:Date
+      component:Date,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/tabs',
       name:'tabs',
-      component:Tabs
+      component:Tabs,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/mypage',
@@ -79,9 +105,21 @@ export default new Router({
       component:shopCart1
     },
     {
-      path:'/shopCart2',
-      name:'shopCart2',
-      component:shopCart2
+      path: '/shopCart2',
+      name: 'shopCart2',
+      component: shopCart2
+    },
+    {
+      path:'/showSelect',
+      name:'showSelect',
+      component:showSelect
+    },
+    {
+      path:'/showInputNumber',
+      name:'showInputNumber',
+      component:showInputNumber
     },
   ]
-})
+});
+
+// 准备动态添加的路由
