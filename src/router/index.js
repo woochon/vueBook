@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '../views/HelloWorld'
+import Home from '../views/home'
+import Login from '../views/login'
 import Throttle from '../views/throttle'
 import Directive from '../views/directive'
 import Scroll from '../views/scroll'
@@ -21,8 +22,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: home
+      name: 'login',
+      redirect:'/login'
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
     },
     {
       path:'/throttle',
@@ -32,22 +43,34 @@ export default new Router({
     {
       path:'/directive',
       name:'directive',
-      component:Directive
+      component:Directive,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/scroll',
       name:'scroll',
-      component:Scroll
+      component:Scroll,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/date',
       name:'date',
-      component:Date
+      component:Date,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/tabs',
       name:'tabs',
-      component:Tabs
+      component:Tabs,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/mypage',
@@ -90,4 +113,6 @@ export default new Router({
       component:showInputNumber
     },
   ]
-})
+});
+
+// 准备动态添加的路由
