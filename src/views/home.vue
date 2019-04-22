@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'home',
   data () {
     return {
       msg: '路由列表',
@@ -79,6 +79,23 @@ export default {
           name:'showInputNumber'
         },
       ]
+    }
+  },
+  created(){
+    console.log(this.$router.options.routes);
+    console.log(this.$router);
+    let tmp  = JSON.parse(localStorage.getItem('addRoutes'));
+    let allRoutes ='';
+    if(tmp&&tmp.length>0){
+      allRoutes = this.$router.options.routes.concat(tmp);
+      localStorage.removeItem('addRoutes');
+    }
+    console.log(allRoutes);
+    this.$set(this,'routes',allRoutes);
+  },
+  watch:{
+    'route'(val){
+      console.log('=====',val);
     }
   }
 }

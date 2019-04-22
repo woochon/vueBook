@@ -16,6 +16,8 @@ import shopCart1 from '../views/shopCart1'
 import shopCart2 from '../views/shopCart2'
 import showSelect from '../views/showSelect'
 import showInputNumber from '../views/showInputNumber'
+import Forbidden from '../views/forbidden'
+import NotFound from '../views/404'
 
 
 Vue.use(Router);
@@ -24,8 +26,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'login',
-      redirect:'/login'
+      name: 'index',
+      redirect:'/home'
     },
     {
       path: '/login',
@@ -41,85 +43,97 @@ export default new Router({
       path:'/throttle',
       name:'throttle',
       component:Throttle
-    },
-    {
-      path:'/directive',
-      name:'directive',
-      component:Directive,
-      meta:{
-        requiresAuth:true
-      }
-    },
-    {
-      path:'/scroll',
-      name:'scroll',
-      component:Scroll,
-      meta:{
-        requiresAuth:true
-      }
-    },
-    {
-      path:'/date',
-      name:'date',
-      component:Date,
-      meta:{
-        requiresAuth:true
-      }
-    },
-    {
-      path:'/tabs',
-      name:'tabs',
-      component:Tabs,
-      meta:{
-        requiresAuth:true
-      }
-    },
-    {
-      path:'/mypage',
-      name:'mypage',
-      component:Page
-    },
-    {
-      path:'/img',
-      name:'img',
-      component:myImg
-    },
-    {
-      path:'/area',
-      name:'area',
-      component:Area
-    },
-    {
-      path:'/showModel',
-      name:'showModel',
-      component:showModel
-    },
-    {
-      path:'/showScroll',
-      name:'showScroll',
-      component:showScroll
-    },
-    {
-      path:'/shopCart1',
-      name:'shopCart1',
-      component:shopCart1
-    },
-    {
-      path: '/shopCart2',
-      name: 'shopCart2',
-      component: shopCart2
-    },
-    {
-      path:'/showSelect',
-      name:'showSelect',
-      component:showSelect
-    },
-    {
-      path:'/showInputNumber',
-      name:'showInputNumber',
-      component:showInputNumber
-    },
+    }
   ]
 });
 
 // 准备动态添加的路由
+export const DynamicRoutes = [
+  {
+        path:'/directive',
+        name:'directive',
+        component:Directive,
+        meta:{
+          requiresAuth:true
+        }
+      },
+      {
+        path:'/scroll',
+        name:'scroll',
+        component:Scroll,
+        meta:{
+          requiresAuth:true
+        }
+      },
+      {
+        path:'/date',
+        name:'date',
+        component:Date,
+        meta:{
+          requiresAuth:true
+        }
+      },
+      {
+        path:'/tabs',
+        name:'tabs',
+        component:Tabs,
+        meta:{
+          requiresAuth:true
+        }
+      },
+      {
+        path:'/mypage',
+        name:'mypage',
+        component:Page
+      },
+      {
+        path:'/img',
+        name:'img',
+        component:myImg
+      },
+      {
+        path:'/area',
+        name:'area',
+        component:Area
+      },
+      {
+        path:'/showModel',
+        name:'showModel',
+        component:showModel
+      },
+      {
+        path:'/showScroll',
+        name:'showScroll',
+        component:showScroll
+      },
+      {
+        path:'/shopCart1',
+        name:'shopCart1',
+        component:shopCart1
+      },
+      {
+        path: '/shopCart2',
+        name: 'shopCart2',
+        component: shopCart2
+      },
+      {
+        path:'/showSelect',
+        name:'showSelect',
+        component:showSelect
+      },
+      {
+        path:'/showInputNumber',
+        name:'showInputNumber',
+        component:showInputNumber
+      },
+      {
+        path:'/403',
+        name:'forbidden',
+        component:Forbidden
+      },
+      {
+        path:'*',
+        name:'notFound',
+        component:NotFound
+      }
+];

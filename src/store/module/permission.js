@@ -1,10 +1,9 @@
 const state ={
-  userName:'woochon'
+  token:'121132asdcASDcSd'
 };
 const mutations = {};
 const actions = {};
 export default{
-  namespace:true,
   state,
   mutations,
   actions

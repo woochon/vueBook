@@ -47,11 +47,11 @@
     },
     mounted(){
       this.$nextTick(()=>{
-        this.getData();
+        /*this.getData();*/
       })
     },
     methods:{
-      getData(){
+      /*getData(){
         axios.get('/static/shopCart2.json').then(res=>{
           let tmpData = res.data;
           let tmpMoney = 0;
@@ -72,7 +72,7 @@
           console.log(this.goodList);
         });
 
-      },
+      },*/
       handleNum(good,flag){
         if(flag<0){
           if(good.num===1){
