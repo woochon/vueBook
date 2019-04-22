@@ -59,6 +59,10 @@ export default {
           name:'area'
         },
         {
+          path:'/mock',
+          name:'mock'
+        },
+        {
           path:'/showModel',
           name:'showModel'
         },
@@ -85,7 +89,7 @@ export default {
     console.log(this.$router.options.routes);
     console.log(this.$router);
     let tmp  = JSON.parse(localStorage.getItem('addRoutes'));
-    let allRoutes ='';
+    let allRoutes =this.$router.options.routes;
     if(tmp&&tmp.length>0){
       allRoutes = this.$router.options.routes.concat(tmp);
       localStorage.removeItem('addRoutes');

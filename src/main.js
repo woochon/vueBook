@@ -3,12 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router,{DynamicRoutes} from './router'
+import store from './store'
 
 import 'vue-area-linkage/dist/index.css';
 import VueAreaLinkage from 'vue-area-linkage';
 Vue.use(VueAreaLinkage);
 
 Vue.config.productionTip = false;
+
+/*if(process.env.NODE_ENV !== 'production'){
+  require './mock/index.js'
+}*/
 
 /*router.beforeEach((to,from,next)=>{
   /!*if(to.path!=='/login'||to.path!=='/'){
@@ -64,6 +69,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

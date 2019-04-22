@@ -15,7 +15,11 @@ import showScroll from '../views/showScroll'
 import shopCart1 from '../views/shopCart1'
 import shopCart2 from '../views/shopCart2'
 import showSelect from '../views/showSelect'
+import store from '../views/store'
+import tree from '../views/tree'
+import storeModule from '../views/storeModule'
 import showInputNumber from '../views/showInputNumber'
+import mock from '../views/mock'
 import Forbidden from '../views/forbidden'
 import NotFound from '../views/404'
 
@@ -43,6 +47,28 @@ export default new Router({
       path:'/throttle',
       name:'throttle',
       component:Throttle
+    },
+    {
+      path:'/mock',
+      name:'mock',
+      component:mock
+    },
+    {
+          path:'/tree',
+          name:'tree',
+          component:tree
+    },
+    {
+      path:'/store',
+      name:'store',
+      component:store,
+      children:[
+        {
+          path:'module',
+          name:'storeModule',
+          component:storeModule
+        }
+      ]
     }
   ]
 });
