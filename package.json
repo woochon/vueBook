@@ -13,9 +13,12 @@
     "area-data": "^5.0.6",
     "axios": "^0.18.0",
     "better-scroll": "^1.15.1",
+    "mockjs": "^1.0.1-beta3",
     "vue": "^2.5.2",
     "vue-area-linkage": "^5.1.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-simple-tree": "^2.3.2",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
