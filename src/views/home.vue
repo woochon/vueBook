@@ -19,6 +19,10 @@ export default {
       msg: '路由列表',
       routes: [
         {
+          path: '/',
+          name: 'login'
+        },
+        {
           path: '/login',
           name: 'login'
         },
@@ -69,6 +73,10 @@ export default {
         {
           path:'/shopCart1',
           name:'shopCart1'
+        },
+        {
+          path: '/shopCart2',
+          name: 'shopCart2'
         },
         {
           path:'/showSelect',

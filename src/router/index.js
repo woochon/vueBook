@@ -121,5 +121,24 @@ export default new Router({
     },
   ]
 });
+/*to.meta&& setTitle(to.meta.title);
+if(to.name!=='login'){
+  if(HAS_LOGIN){
+    next()
+  }else{
+    next({name:'login'})
+  }
+}else{
+  //防止出现在url栏手动输入地址
+  if(HAS_LOGIN){
+    next({name:'HelloWorld'})
+  }else{
+    next();
+  }
+}*/
+/*export const setTitle=(title)=>{
+  window.document.title=title||'undefined'
+};*/
+
 
 // 准备动态添加的路由
