@@ -1,7 +1,11 @@
 const state ={
-  userName:'woochon'
+  token:'121132asdcASDcSd',
 };
-const mutations = {};
+const mutations = {
+  getToken(state){
+    console.log(state);
+  }
+};
 const actions = {};
 export default{
   namespace:true,

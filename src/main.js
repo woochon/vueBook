@@ -16,9 +16,11 @@ if(process.env.NODE_ENV !== 'production'){
   require('./mock');
   console.log('123');
 }
-
-/*router.beforeEach((to,from,next)=>{
-  /!*if(to.path!=='/login'||to.path!=='/'){
+let load_onece = false;
+console.log('===',store.state);
+console.log('===',store.state.user);
+router.beforeEach((to,from,next)=>{
+  /*if(to.path!=='/login'||to.path!=='/'){
     let tmp =[];
     if(!localStorage.getItem('token')){
       tmp = DynamicRoutes.filter((item)=>{
@@ -34,8 +36,8 @@ if(process.env.NODE_ENV !== 'production'){
     next();
   }else{
     next({path:'/login'});
-  }*!/
-  /!*let tmp =[];
+  }*/
+  /*let tmp =[];
   if(!localStorage.getItem('token')){
       tmp = DynamicRoutes.filter((item)=>{
         return (!item.meta)||(item.meta&&(!item.meta.requiresAuth));
@@ -53,19 +55,33 @@ if(process.env.NODE_ENV !== 'production'){
     next({path:to.fullPath});
   }else{
     next();
-  }*!/
-  /!*if(localStorage.getItem('hasLogin')==='1'){
+  }*/
+  if(to.path==='/login'){
+    load_onece = false;
+  }
+  if(!load_onece){
     let tmp =[];
-    tmp = DynamicRoutes.filter((item)=>{
-      return (!item.meta)||(item.meta&&(!item.meta.requiresAuth));
-    });
-    router.addRoutes(tmp);
-    localStorage.setItem('addRoutes',JSON.stringify(tmp));
-    next()
+    if(localStorage.getItem('hasLogin')==='1'){
+      tmp = DynamicRoutes.filter((item)=>{
+        return (!item.meta)||(item.meta&&(item.meta.requiresAuth))
+      });
+      router.addRoutes(tmp);
+      localStorage.setItem('addRoutes',JSON.stringify(tmp));
+      load_onece=true;
+      next()
+    }else{
+      tmp = DynamicRoutes.filter((item)=>{
+        return !item.meta;
+      });
+      router.addRoutes(tmp);
+      localStorage.setItem('addRoutes',JSON.stringify(tmp));
+      load_onece=true;
+      next();
+    }
   }else{
     next();
-  }*!/
-});*/
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({
