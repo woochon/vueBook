@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       msg: '路由列表',
-      routes: [
+      /*routes: [
         {
           path: '/',
           name: 'login'
@@ -90,11 +90,12 @@ export default {
           path:'/showInputNumber',
           name:'showInputNumber'
         },
-      ]
+      ]*/
+      routes:[]
     }
   },
   created(){
-    console.log(this.$router.options.routes);
+    /*console.log(this.$router.options.routes);
     console.log(this.$router);
     let tmp  = JSON.parse(localStorage.getItem('addRoutes'));
     let allRoutes =this.$router.options.routes;
@@ -102,8 +103,8 @@ export default {
       allRoutes = this.$router.options.routes.concat(tmp);
       localStorage.removeItem('addRoutes');
     }
-    console.log(allRoutes);
-    this.$set(this,'routes',allRoutes);
+    console.log(allRoutes);*/
+    this.$set(this,'routes',this.$router.options.routes);
   },
   watch:{
     'route'(val){

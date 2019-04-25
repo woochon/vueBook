@@ -1,5 +1,4 @@
 const Mock = require('mockjs');
-const Random = Mock.Random;
 import { getUserInfo } from './tempateData'
 const BaserUrl = 'http://localhost:3000';
 /*const data = Mock.mock(`${BaserUrl}/`,'post',{
@@ -16,7 +15,7 @@ const BaserUrl = 'http://localhost:3000';
         'boolean2|1-2':true,
       });*/
 Mock.mock(`${BaserUrl}/userInfo`, 'post', getUserInfo('woochon'));
-/*Mock.setup({
-  timeout:'100-600'
-});*/
+Mock.setup({
+  timeout:'100-300'
+});
 export default Mock;

@@ -2,6 +2,7 @@
   <div class="mock">
     <!--<img v-for="(item,index) in mock.list" :key="index" :src="item.image" alt="">-->
     <button @click="getData">获取数据</button>
+    <img :src="url" alt="">
   </div>
 </template>
 <script>
@@ -13,7 +14,8 @@
     name:'mock',
     data(){
       return {
-        mock:'',
+        //mock:'',
+        url:''
       }
     },
     created(){
@@ -43,6 +45,8 @@
       getData(){
         getUserInfo().then(res=>{
           console.log(res);
+          this.url=res.avatar;
+          console.log(this.url);
         })
       }
     }

@@ -14,13 +14,10 @@ Vue.config.productionTip = false;
 
 if(process.env.NODE_ENV !== 'production'){
   require('./mock');
-  console.log('123');
 }
-let load_onece = false;
-console.log('===',store.state);
-console.log('===',store.state.user);
+/*let load_onece = false;
 router.beforeEach((to,from,next)=>{
-  /*if(to.path!=='/login'||to.path!=='/'){
+  /!*if(to.path!=='/login'||to.path!=='/'){
     let tmp =[];
     if(!localStorage.getItem('token')){
       tmp = DynamicRoutes.filter((item)=>{
@@ -36,8 +33,8 @@ router.beforeEach((to,from,next)=>{
     next();
   }else{
     next({path:'/login'});
-  }*/
-  /*let tmp =[];
+  }*!/
+  /!*let tmp =[];
   if(!localStorage.getItem('token')){
       tmp = DynamicRoutes.filter((item)=>{
         return (!item.meta)||(item.meta&&(!item.meta.requiresAuth));
@@ -55,7 +52,7 @@ router.beforeEach((to,from,next)=>{
     next({path:to.fullPath});
   }else{
     next();
-  }*/
+  }*!/
   if(to.path==='/login'){
     load_onece = false;
   }
@@ -81,7 +78,7 @@ router.beforeEach((to,from,next)=>{
   }else{
     next();
   }
-});
+});*/
 
 /* eslint-disable no-new */
 new Vue({
@@ -90,4 +87,4 @@ new Vue({
   store,
   components: { App },
   template: '<App/>'
-})
+});

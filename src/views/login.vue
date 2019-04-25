@@ -48,7 +48,7 @@
     login(){
       console.log('123');
       this.$router.push({path:'/home'});
-      localStorage.setItem('hasLogin',1);
+      /*localStorage.setItem('hasLogin',1);*/
     }
   }
 };

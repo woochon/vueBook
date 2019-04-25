@@ -1,14 +1,15 @@
 <template>
   <div>
     404没有找到资源
+    {{msg}}
   </div>
 </template>
 <script>
   export default{
-    name:'notFound',
+    name:'noneFound',
     data(){
       return {
-
+        msg:'asd'
       }
     },
     components:{
