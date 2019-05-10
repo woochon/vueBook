@@ -1,6 +1,11 @@
 <template>
   <div>
-    <mySelect :options="options" @on-change="handlerChange" v-model="select"></mySelect>
+    <mySelect
+      :options="options"
+      @on-change="handlerChange"
+      v-model="select"
+      :height="40"
+    ></mySelect>
     <button @click="changeSelect">改变select</button>
     <button @click="getSelect">获取select</button>
   </div>
@@ -11,7 +16,7 @@
     name:'showSelect',
     data(){
       return {
-        select:'hah',
+        select:'',
         options:[
           {
             value:'js',
@@ -36,7 +41,7 @@
         console.log(data);
       },
       changeSelect(){
-        this.select = 'asf';
+        this.select = 'java';
       },
       getSelect(){
         console.log(this.select);

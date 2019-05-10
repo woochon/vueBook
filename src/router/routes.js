@@ -43,6 +43,11 @@ export const routes= [
     component:()=>import('../views/tree')
   },
   {
+    path:'/showLoadMore',
+    name:'showLoadMore',
+    component:()=>import('../views/showLoadMore')
+  },
+  {
     path:'/store',
     name:'store',
     component:()=>import('../views/store'),
@@ -93,6 +98,11 @@ export const routes= [
     path:'/showModel',
     name:'showModel',
     component:()=>import('../views/showModal')
+  },
+  {
+    path:'/showIview',
+    name:'/showIview',
+    component:()=>import('../views/showIview')
   },
   {
     path:'/showScroll',

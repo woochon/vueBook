@@ -6,11 +6,15 @@ import router,{DynamicRoutes} from './router'
 import store from './store'
 // import Mock from './mock'
 
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+
 import 'vue-area-linkage/dist/index.css';
 import VueAreaLinkage from 'vue-area-linkage';
 Vue.use(VueAreaLinkage);
 
 Vue.config.productionTip = false;
+Vue.use(iView);
 
 if(process.env.NODE_ENV !== 'production'){
   require('./mock');
