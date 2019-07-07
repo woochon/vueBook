@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-module.exports =async (db) =>{
+module.exports =async (db,cb) =>{
   let maxConnectTimes =0;
   /*if(process.env.NODE_ENV !=='production'){
       mongoose.set('debug',true);
@@ -23,5 +23,6 @@ module.exports =async (db) =>{
   });
   mongoose.connection.on('open',()=>{
     console.log('mongodb connected');
+    cb();
   });
 };

@@ -19,19 +19,20 @@ const whiteListUrl = {
 };
 
 (async ()=>{
-  await db_connect('mongodb://127.0.0.1:27017/woochon');
-  const app = new Koa();
-  middleware(app);
+  await db_connect('mongodb://127.0.0.1:27017/woochon',function(){
+    const app = new Koa();
+    middleware(app);
 // 指定 public目录为静态资源目录，用来存放 js css images 等
-  app.use(staticFiles(path.resolve(__dirname, "./public")));
-  app.use(nunjucks({
-    ext: 'html',
-    path: path.join(__dirname, 'views'),// 指定视图目录
-    nunjucksConfig: {
-      trimBlocks: true // 开启转义 防Xss
-    }
-  }));
+    app.use(staticFiles(path.resolve(__dirname, "./public")));
+    app.use(nunjucks({
+      ext: 'html',
+      path: path.join(__dirname, 'views'),// 指定视图目录
+      nunjucksConfig: {
+        trimBlocks: true // 开启转义 防Xss
+      }
+    }));
 
+<<<<<<< HEAD
   app.use(bodyParser());
 
   app.use((ctx,next)=>{
@@ -78,5 +79,12 @@ const whiteListUrl = {
   router(app);
   app.listen(3000, ()=>{
     console.log('server is running at http://localhost:3000')
+=======
+    app.use(bodyParser());
+    router(app);
+    app.listen(3000, ()=>{
+      console.log('server is running at http://localhost:3000')
+    });
+>>>>>>> 9a0cf76b8a2580fe2c24c1a63c478da2602bcab2
   });
 })();
