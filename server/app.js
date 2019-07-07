@@ -1,12 +1,22 @@
 const Koa = require('koa');
 const path = require('path');
 const bodyParser = require('koa-bodyparser');
+const jwt = require('jsonwebtoken');
+//const verify = util.promisify(jwt.verify); // 解密
 const nunjucks = require('koa-nunjucks-2');
 const staticFiles = require('koa-static');
 const db_connect = require('./database/index');
 const router = require('./router');
 const middleware = require('./middleware');
+const jwtKoa = require('koa-jwt');
 
+const hasOneOf =(str,arr)=>{
+  return arr.some(item=>item.includes(str));
+};
+const whiteListUrl = {
+  get:[],
+  post:['/login']
+};
 
 (async ()=>{
   await db_connect('mongodb://127.0.0.1:27017/woochon');
@@ -23,6 +33,48 @@ const middleware = require('./middleware');
   }));
 
   app.use(bodyParser());
+
+  app.use((ctx,next)=>{
+    let method = ctx.req.method.toLowerCase();
+    let path = ctx.req.path;
+    if(whiteListUrl[method]&&hasOneOf(path,whiteListUrl[method])){
+      next();
+    }
+    else{
+      const token = ctx.header.authorization;  // 获取jwt
+      let payload;
+      if(!token){
+        ctx.response.status=401;
+        ctx.send({
+          code:401,
+          msg:'no token',
+          data:null
+        })
+      }else{
+        jwt.verify(token,'abcd',(error,decode)=>{
+          if(error){
+            ctx.response.send({
+              code:401,
+              msg:'no token',
+              data:null
+            })
+          }else{
+            ctx.request.body.userName = decode.name;
+            next();
+          }
+        });
+        next();
+      }
+    }
+  });
+
+  app.use((ctx,next)=>{
+    jwtKoa({secret:'abcd'}).unless({
+      path:['/login']
+    });
+    next();
+  });
+
   router(app);
   app.listen(3000, ()=>{
     console.log('server is running at http://localhost:3000')

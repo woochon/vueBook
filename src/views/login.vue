@@ -29,6 +29,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import {mapActions} from 'vuex';
   export default {
   name:"Login",
   data(){
@@ -45,11 +46,16 @@
 
   },
   methods:{
-    login(){
-      console.log('123');
-      this.$router.push({path:'/home'});
-      /*localStorage.setItem('hasLogin',1);*/
+    ...mapActions([
+      'login'
+    ]),
+    handSubmit(){
+      this.login({
+        userName:this.email,
+        password:this.password
+      })
     }
+
   }
 };
 </script>

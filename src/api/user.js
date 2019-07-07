@@ -9,3 +9,14 @@ export const getUserInfo =()=>{
     }
   })
 };
+
+export const login =({userName,password})=>{
+  return axios.request({
+    url:'/login',
+    method:'post',
+    data:{
+      userName,
+      password
+    }
+  })
+};
