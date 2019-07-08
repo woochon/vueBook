@@ -1,5 +1,5 @@
-//import {authorization} from "../../mock/tempateData";
-import {login,getAuthorization} from '../../api/user.js'
+import {getAuthorization,login} from "../../mock/tempateData";
+//import {login,getAuthorization} from '../../api/user.js'
 import {setToken,getToken} from "../../lib/util";
 
 const state ={

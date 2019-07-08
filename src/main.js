@@ -17,81 +17,17 @@ Vue.use(VueAreaLinkage);
 Vue.config.productionTip = false;
 Vue.use(iView);
 
-/*if(process.env.NODE_ENV !== 'production'){
+if(process.env.NODE_ENV !== 'production'){
   require('./mock');
-}*/
-/*let load_onece = false;
-router.beforeEach((to,from,next)=>{
-  /!*if(to.path!=='/login'||to.path!=='/'){
-    let tmp =[];
-    if(!localStorage.getItem('token')){
-      tmp = DynamicRoutes.filter((item)=>{
-        return (!item.meta)||(item.meta&&(!item.meta.requiresAuth));
-      });
-    }else{
-      tmp = DynamicRoutes.filter((item)=>{
-        return (!item.meta)||(item.meta&&(!item.meta.requiresAuth));
-      });
-    }
-    router.addRoutes(tmp);
-    localStorage.setItem('addRoutes',JSON.stringify(tmp));
-    next();
-  }else{
-    next({path:'/login'});
-  }*!/
-  /!*let tmp =[];
-  if(!localStorage.getItem('token')){
-      tmp = DynamicRoutes.filter((item)=>{
-        return (!item.meta)||(item.meta&&(!item.meta.requiresAuth));
-      });
-    }else{
-      tmp = DynamicRoutes.filter((item)=>{
-        return (!item.meta)||(item.meta&&(!item.meta.requiresAuth));
-      });
-    }
-  router.addRoutes(tmp);
-  console.log(router);
-  localStorage.setItem('addRoutes',JSON.stringify(tmp));
-  console.log(typeof (localStorage.getItem('hasLogin')));
-  if(localStorage.getItem('hasLogin')==='1'){
-    next({path:to.fullPath});
-  }else{
-    next();
-  }*!/
-  if(to.path==='/login'){
-    load_onece = false;
-  }
-  if(!load_onece){
-    let tmp =[];
-    if(localStorage.getItem('hasLogin')==='1'){
-      tmp = DynamicRoutes.filter((item)=>{
-        return (!item.meta)||(item.meta&&(item.meta.requiresAuth))
-      });
-      router.addRoutes(tmp);
-      localStorage.setItem('addRoutes',JSON.stringify(tmp));
-      load_onece=true;
-      next()
-    }else{
-      tmp = DynamicRoutes.filter((item)=>{
-        return !item.meta;
-      });
-      router.addRoutes(tmp);
-      localStorage.setItem('addRoutes',JSON.stringify(tmp));
-      load_onece=true;
-      next();
-    }
-  }else{
-    next();
-  }
-});*/
+}
 
 
 const HAS_LOGIN = false;
-router.beforeEach((to,from,next)=>{
-  /*
+/*router.beforeEach((to,from,next)=>{
+  /!*
   * 如果有token调用接口判断token是否过期
   * 如果没有token,跳登录
-  * */
+  * *!/
   const token = getToken();
   console.log(token,'=====');
   if(token){
@@ -110,6 +46,32 @@ router.beforeEach((to,from,next)=>{
     if(to.name==='login') next();
     else next({name:'login'})
   }
+});*/
+
+router.beforeEach((to,from,next)=>{
+
+  const token = getToken();
+  if(token){
+    if(!store.state.permission.hasGetRules){
+      store.dispatch('authorization').then(rules=>{
+        store.dispatch('concat_routes',rules).then((routers)=>{
+          /*router.addRoutes(JSON.parse(JSON.stringify(routers)));*/
+          next({...to,replace:true})
+        }).catch(()=>{
+          next({name:'login'})
+        })
+      })
+    }else{
+      next();
+    }
+  }else{
+    if(to.name==='login'){
+      next();
+    }else{
+      next({name:'login'})
+    }
+  }
+
 });
 
 /* eslint-disable no-new */

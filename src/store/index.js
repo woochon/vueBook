@@ -5,7 +5,7 @@ import getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
 import user from './module/user'
-import permission from './module/user'
+import permission from './module/permission'
 import { saveInLocal } from "./plugin/saveInLocal";
 
 Vue.use(Vuex);

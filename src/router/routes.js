@@ -2,6 +2,11 @@ import Login from '../views/login'
 import NotFound from '../views/noneFound'
 /*export const routes= [
   {
+    path: '/',
+    name: 'index',
+    redirect:'/home'
+  },
+  {
     path: '/login',
     name: 'login',
     component: Login
@@ -136,7 +141,6 @@ export const routes= [
   },
   {
     path:'*',
-    // name:'noneFound',
     component:NotFound
   }
 ];

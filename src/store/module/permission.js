@@ -1,22 +1,22 @@
 import { routes,routeMaps } from '../../router/routes'
 const state ={
   routers:routes,
-  hasGetRouters:false
+  hasGetRules:false
 };
 const mutations = {
-  concat_routes(state,routerList){
+  concat_routes_1(state,routerList){
     state.routers = routerList.concat(routes);
     state.hasGetRouters = true;
   }
 };
 
-const getAccessRouterList=function(routeMaps,routers){
+const getAccessRouterList=function(routes,rules){
   return routes.filter(item=>{
     if(rules[item.name]){
       if(item.children){
-        item.children = getAccessRouterList(item.children,routers);
-        return true
+        item.children = getAccessRouterList(item.children,rules);
       }
+      return true
     }else{
       return false
     }
@@ -24,23 +24,27 @@ const getAccessRouterList=function(routeMaps,routers){
 };
 
 const actions = {
-  getPermissionList({commit},routers){
+  concat_routes({commit},rules){
+    console.log('1234');
     return new Promise((resolve,reject)=>{
       try{
         let routeList = [];
-        if(Object.enters(routers).every(item=>item[1])){
+        if(Object.entries(rules).every(item=>item[1])){
           routeList =routeMaps;
         }else{
-          routeList = getAccessRouterList(routeMaps,routers);
+          routeList = getAccessRouterList(routeMaps,rules);
         }
-        commit('concat_routes',routeList );
+        console.log(state.routers,'======');
+        commit('concat_routes_1',routeList );
         resolve(state.routers);
+        console.log(state.routers,'++++++');
       }catch(err){
         reject(err);
       }
     })
   }
 };
+
 export default{
   state,
   mutations,
