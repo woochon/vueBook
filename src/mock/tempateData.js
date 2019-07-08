@@ -10,8 +10,19 @@ export const getUserInfo =(option)=>{
     img:Random.dataImage()
   }
 };
+export const login = ()=>{
+  console.log('222222');
+  return {
+    code: 200,
+    data: {
+      token: 'xxx'
+    },
+    mes: ''
+  }
+};
 
 export const authorization =()=>{
+  console.log('33333');
   return {
     code:200,
     data:{

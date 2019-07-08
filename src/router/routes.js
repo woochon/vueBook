@@ -22,7 +22,7 @@ export const routes= [
     name: 'index',
     redirect:'/home'
   },
-  {
+  /*{
     path: '/home',
     name: 'home',
     component: ()=>import('../views/home')
@@ -133,19 +133,19 @@ export const routes= [
     path: '/403',
     name: 'forbidden',
     component: () => import('../views/forbidden')
-  },
+  },*/
   {
     path:'*',
     // name:'noneFound',
     component:NotFound
   }
 ];
-export const routeMaps = [
-  {
+export const routerMap = [
+  /*{
     path: '/',
     name: 'index',
     redirect:'/home'
-  },
+  },*/
   {
     path: '/home',
     name: 'home',

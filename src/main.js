@@ -12,16 +12,16 @@ import 'iview/dist/styles/iview.css';
 
 import 'vue-area-linkage/dist/index.css';
 import VueAreaLinkage from 'vue-area-linkage';
+import permission from "./store/module/user";
 Vue.use(VueAreaLinkage);
 
 Vue.config.productionTip = false;
 Vue.use(iView);
 
-/*if(process.env.NODE_ENV !== 'production'){
+if(process.env.NODE_ENV !== 'production'){
   require('./mock');
-}*/
-/*let load_onece = false;
-router.beforeEach((to,from,next)=>{
+}
+/*router.beforeEach((to,from,next)=>{
   /!*if(to.path!=='/login'||to.path!=='/'){
     let tmp =[];
     if(!localStorage.getItem('token')){
@@ -85,13 +85,41 @@ router.beforeEach((to,from,next)=>{
   }
 });*/
 
-
-const HAS_LOGIN = false;
 router.beforeEach((to,from,next)=>{
-  /*
+  const token = getToken();
+  console.log(store.state.permission.hasGetRules);
+  console.log(token);
+  if (token) {
+    if (!store.state.permission.hasGetRules) {
+      console.log('0000');
+      store.dispatch('authorization').then(rules => {
+        console.log(rules,'rules');
+        store.dispatch('concatRoutes', rules).then(routers => {
+          router.addRoutes(routers);
+          next({ ...to, replace: true })
+        }).catch(() => {
+          next({ name: 'login' })
+        })
+      }).catch(() => {
+        setToken('');
+        next({ name: 'login' })
+      })
+    } else {
+      next()
+    }
+  } else {
+    if (to.name === 'login') next()
+    else next({ name: 'login' })
+  }
+});
+
+
+/*const HAS_LOGIN = false;
+router.beforeEach((to,from,next)=>{
+  /!*
   * 如果有token调用接口判断token是否过期
   * 如果没有token,跳登录
-  * */
+  * *!/
   const token = getToken();
   console.log(token,'=====');
   if(token){
@@ -110,7 +138,7 @@ router.beforeEach((to,from,next)=>{
     if(to.name==='login') next();
     else next({name:'login'})
   }
-});
+});*/
 
 /* eslint-disable no-new */
 new Vue({

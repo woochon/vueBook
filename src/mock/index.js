@@ -1,5 +1,5 @@
 const Mock = require('mockjs');
-import { getUserInfo } from './tempateData'
+import { getUserInfo,login,authorization } from './tempateData'
 const BaserUrl = 'http://localhost:3000';
 /*const data = Mock.mock(`${BaserUrl}/`,'post',{
         'list|1-10':[{
@@ -15,6 +15,8 @@ const BaserUrl = 'http://localhost:3000';
         'boolean2|1-2':true,
       });*/
 Mock.mock(`${BaserUrl}/userInfo`, 'post', getUserInfo('woochon'));
+Mock.mock(`${BaserUrl}/login`, 'post', login);
+Mock.mock(`${BaserUrl}/authorization`, 'post', authorization);
 Mock.setup({
   timeout:'100-300'
 });
