@@ -1,41 +1,51 @@
-import {authorization} from "../../mock/tempateData";
-import {login} from "../../api/user";
+//import {authorization} from "../../mock/tempateData";
+import {login,getAuthorization} from '../../api/user.js'
+import {setToken,getToken} from "../../lib/util";
 
 const state ={
   token:'121132asdcASDcSd',
 };
 const mutations = {
-  getToken(state){
-    console.log(state);
-  },
-  setToken(state){
 
-  }
 };
 const actions = {
   // mock
-  /*authorization({commit},token){
+  authorization({commit},token){
     return new Promise((resolve,reject)=>{
-      authorization().then(res=>{
+      getAuthorization().then(res=>{
         if(parseInt(res.code)===401){
           reject(new Error('token error'))
         }else{
-          setToken(res.data.token);
-          resolve(res.data.rules.page)
+          console.log(res.data.data.token,'===');
+          setToken(res.data.data.token);
+          console.log('000000' );
+          resolve(res.data.data.token);
         }
       }).catch(err=>{
         reject(err)
       })
     })
-  },*/
-  logout(){
-    setToken('')
+  },
+  layout(){
+    setToken('');
+    console.log('1234');
   },
   login({commit},{userName,password}){
-    login({userName,password}).then(res=>{
-      console.log(res);
-    }).catch(err=>{
-      console.log(err)
+    return new Promise((resolve, reject)=>{
+      login({userName,password}).then(res=>{
+        console.log(res);
+        if(res.code===200){
+          console.log(res.data.token,'6666');
+          setToken(res.data.token);
+          resolve();
+        }else{
+          console.log('获取token失败');
+          reject();
+        }
+      }).catch(err=>{
+        console.log(err);
+        reject();
+      })
     })
   }
 };

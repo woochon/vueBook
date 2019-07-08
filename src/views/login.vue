@@ -23,7 +23,7 @@
         {{warmMsg}}
       </div>
       <div class="btn-wrapper">
-        <div class="my-btn" @click="login">登录</div>
+        <div class="my-btn" @click="handSubmit">登录</div>
       </div>
     </div>
   </div>
@@ -50,9 +50,13 @@
       'login'
     ]),
     handSubmit(){
+      //console.log(this.login);
       this.login({
         userName:this.email,
         password:this.password
+      }).then(()=>{
+        console.log('1111');
+        this.$router.push({name:'home'})
       })
     }
 

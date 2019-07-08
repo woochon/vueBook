@@ -12,7 +12,7 @@ export const getUserInfo =()=>{
 
 export const login =({userName,password})=>{
   return axios.request({
-    url:'/login',
+    url:`${BaserUrl}/login`,
     method:'post',
     data:{
       userName,
@@ -20,3 +20,13 @@ export const login =({userName,password})=>{
     }
   })
 };
+
+
+export const getAuthorization=(token)=>{
+  return axios.request({
+    url:`${BaserUrl}/authorization`,
+    method:'post',
+    data:{
+      token
+    }
+  })};

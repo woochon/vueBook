@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router,{DynamicRoutes} from './router'
 import store from './store'
+import {getToken, setToken} from "./lib/util";
 // import Mock from './mock'
 
 import iView from 'iview';
@@ -16,9 +17,9 @@ Vue.use(VueAreaLinkage);
 Vue.config.productionTip = false;
 Vue.use(iView);
 
-if(process.env.NODE_ENV !== 'production'){
+/*if(process.env.NODE_ENV !== 'production'){
   require('./mock');
-}
+}*/
 /*let load_onece = false;
 router.beforeEach((to,from,next)=>{
   /!*if(to.path!=='/login'||to.path!=='/'){
@@ -83,6 +84,33 @@ router.beforeEach((to,from,next)=>{
     next();
   }
 });*/
+
+
+const HAS_LOGIN = false;
+router.beforeEach((to,from,next)=>{
+  /*
+  * 如果有token调用接口判断token是否过期
+  * 如果没有token,跳登录
+  * */
+  const token = getToken();
+  console.log(token,'=====');
+  if(token){
+    console.log('5555');
+    store.dispatch('authorization',token).then(()=>{
+      console.log('3333');
+      if(to.name==='login') next({name:'home'});
+      else next();
+    }).catch(()=>{
+      console.log('clear token');
+      //setToken('');
+      next({name:'login'})
+    })
+  }else{
+    console.log('1000000');
+    if(to.name==='login') next();
+    else next({name:'login'})
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({

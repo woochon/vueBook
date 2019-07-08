@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { baseURL } from '../config'
+import {getToken} from "./util";
 
 class HttpRequest{
   constructor(baseUrl = baseURL) {
@@ -23,6 +24,7 @@ class HttpRequest{
         /*Spin.show()*/
       }
       this.queue[url]=true;
+      config.headers['Authorization']=getToken();
       return config
     },(err)=>{
       return Promise.reject(err)

@@ -8,7 +8,9 @@ module.exports ={
     await ctx.render('user/index',{title:'欢迎来到',msgList:res});
   },*/
   login:async(ctx,next)=>{
-    const {userName,password} = ctx.req.body;
+    console.log('2222');
+    const {userName,password} = ctx.request.body;
+    console.log(userName,password);
     if(userName){
       if(!userName||!password||password!=='123'){
         ctx.response.status=401;
@@ -18,7 +20,7 @@ module.exports ={
           data:null
         });
       }else{
-        res.send({
+        ctx.send({
           code:200,
           msg:'success',
           data:{
@@ -29,7 +31,7 @@ module.exports ={
         })
       }
     }else{
-      res.status(401).send({
+      ctx.status(401).send({
         code:401,
         mes:'user name is  empty',
         data:{}
@@ -37,14 +39,14 @@ module.exports ={
     }
   },
   authorization:async (ctx,next)=>{
-    const userName = ctx.req.body;
-    res.send({
+    const userName = ctx.request.body;
+    ctx.send({
       code:200,
       msg:'success',
       data:{
         data:{
           token:jwt.sign({name:userName},'abcd',{
-            expiresIn:6000
+            expiresIn:24*60*60
           })
         }
       }
