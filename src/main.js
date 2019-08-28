@@ -5,6 +5,9 @@ import App from './App'
 import router,{DynamicRoutes} from './router'
 import store from './store'
 import {getToken, setToken} from "./lib/util";
+
+import toast from './components/toast'
+import messageBox from './components/toast2'
 // import Mock from './mock'
 
 import iView from 'iview';
@@ -16,10 +19,15 @@ Vue.use(VueAreaLinkage);
 
 Vue.config.productionTip = false;
 Vue.use(iView);
+Vue.use(toast);
+Vue.use(messageBox);
 
 if(process.env.NODE_ENV !== 'production'){
   require('./mock');
 }
+
+
+
 
 
 const HAS_LOGIN = false;
@@ -48,14 +56,14 @@ const HAS_LOGIN = false;
   }
 });*/
 
-router.beforeEach((to,from,next)=>{
+/*router.beforeEach((to,from,next)=>{
 
   const token = getToken();
   if(token){
     if(!store.state.permission.hasGetRules){
       store.dispatch('authorization').then(rules=>{
         store.dispatch('concat_routes',rules).then((routers)=>{
-          /*router.addRoutes(JSON.parse(JSON.stringify(routers)));*/
+          /!*router.addRoutes(JSON.parse(JSON.stringify(routers)));*!/
           next({...to,replace:true})
         }).catch(()=>{
           next({name:'login'})
@@ -72,7 +80,7 @@ router.beforeEach((to,from,next)=>{
     }
   }
 
-});
+});*/
 
 /* eslint-disable no-new */
 new Vue({

@@ -38,6 +38,11 @@ export const routes= [
     component:()=>import('../views/throttle')
   },
   {
+    path:'/showToast',
+    name:'showToast',
+    component: ()=> import('../views/showToast')
+  },
+  {
     path:'/mock',
     name:'mock',
     component:()=>import('../views/mock')
