@@ -12,85 +12,12 @@
 </template>
 
 <script>
+  import {routeMaps} from '../router/routes'
 export default {
   name: 'home',
   data () {
     return {
       msg: '路由列表',
-      /*routes: [
-        {
-          path: '/',
-          name: 'login'
-        },
-        {
-          path: '/login',
-          name: 'login'
-        },
-        {
-          path: '/home',
-          name: 'home'
-        },
-        {
-          path:'/throttle',
-          name:'throttle'
-        },
-        {
-          path:'/directive',
-          name:'directive'
-        },
-        {
-          path:'/scroll',
-          name:'scroll'
-        },
-        {
-          path:'/date',
-          name:'date'
-        },
-        {
-          path:'/tabs',
-          name:'tabs'
-        },
-        {
-          path:'/mypage',
-          name:'mypage'
-        },
-        {
-          path:'/img',
-          name:'img'
-        },
-        {
-          path:'/area',
-          name:'area'
-        },
-        {
-          path:'/mock',
-          name:'mock'
-        },
-        {
-          path:'/showModel',
-          name:'showModel'
-        },
-        {
-          path:'/showScroll',
-          name:'showScroll'
-        },
-        {
-          path:'/shopCart1',
-          name:'shopCart1'
-        },
-        {
-          path: '/shopCart2',
-          name: 'shopCart2'
-        },
-        {
-          path:'/showSelect',
-          name:'showSelect'
-        },
-        {
-          path:'/showInputNumber',
-          name:'showInputNumber'
-        },
-      ]*/
       routes:[]
     }
   },
@@ -122,13 +49,17 @@ h1, h2 {
 ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 li {
-  margin: 10px 10px;
+  width: 45%;
+  margin: 10px 0 ;
   line-height: 30px;
   cursor: pointer;
   background-color: lightgoldenrodyellow;
-  padding: 0 20px;
+  text-align: center;
 }
 a {
   color: #42b983;

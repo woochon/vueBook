@@ -38,8 +38,8 @@
        email:'',
        password:'',
        identify:'',
-        tmpIdentify:'',
-        codeText:''
+      tmpIdentify:'',
+      codeText:''
     };
   },
   created(){
@@ -54,8 +54,8 @@
       this.login({
         userName:this.email,
         password:this.password
-      }).then(()=>{
-        console.log('1111');
+      }).then((res)=>{
+        console.log(res);
         this.$router.push({name:'home'})
       })
     }

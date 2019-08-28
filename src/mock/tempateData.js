@@ -11,21 +11,48 @@ export const getUserInfo =(option)=>{
   }
 };
 
-export const login = ()=>{
-  return new Promise((resolve,reject)=>{
-    resolve({
-      code:200,
-      msg:'登录成功',
-      data:{
-        token:'xxxx',
-      }
-    })
-  })
+export const login = ({username,password})=>{
+  return {
+    code:200,
+    msg:'登录成功',
+    data:{
+      token:'xxxx',
+      username,
+      password
+    }
+  }
 };
 
 export const getAuthorization =()=>{
-  console.log('123');
-  return new Promise((resolve,reject)=>{
+  return {
+    code:200,
+    data:{
+      data:{
+        token:'xxxx'
+      },
+      page:{
+        directive:false,
+        scroll:false,
+        date:false,
+        tabs:false,
+        mypage:true,
+        img:true,
+        area:true,
+        showModel:true,
+        showScroll:true,
+        shopCart1:true,
+        shopCart2:true,
+        showSelect:true,
+        showInputNumber:true,
+        forbidden:true
+      },
+      component:{
+        edit_button:true,
+        publish_button:false
+      }
+    }
+  };
+  /*return new Promise((resolve,reject)=>{
     resolve({
       code:200,
       data:{
@@ -54,5 +81,5 @@ export const getAuthorization =()=>{
         }
       }
     });
-  })
+  })*/
 };

@@ -8,7 +8,7 @@ import {getToken, setToken} from "./lib/util";
 
 import toast from './components/toast'
 import messageBox from './components/toast2'
-// import Mock from './mock'
+import Mock from './mock'
 
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
@@ -27,34 +27,27 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 
-
-
-
-const HAS_LOGIN = false;
-/*router.beforeEach((to,from,next)=>{
-  /!*
+// const HAS_LOGIN = false;
+router.beforeEach((to,from,next)=>{
+  /*
   * 如果有token调用接口判断token是否过期
   * 如果没有token,跳登录
-  * *!/
+  * */
   const token = getToken();
   console.log(token,'=====');
   if(token){
-    console.log('5555');
     store.dispatch('authorization',token).then(()=>{
-      console.log('3333');
       if(to.name==='login') next({name:'home'});
       else next();
     }).catch(()=>{
-      console.log('clear token');
       //setToken('');
       next({name:'login'})
     })
   }else{
-    console.log('1000000');
     if(to.name==='login') next();
     else next({name:'login'})
   }
-});*/
+});
 
 /*router.beforeEach((to,from,next)=>{
 

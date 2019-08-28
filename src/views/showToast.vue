@@ -3,6 +3,11 @@
     <button @click="showToast">显示Toast</button>
     <button @click="showMessage">显示messageBox</button>
     <button @click="showMes">显示messageBox对象方式</button>
+
+    <div v-if="showFullScreen">
+      <button @click="handleFullScreen('half')">进入全屏</button>
+      <button @click="handleFullScreen('full')">退出全屏</button>
+    </div>
   </div>
 </template>
 
@@ -12,10 +17,39 @@
     name: 'showToast',
     data() {
       return {
-        title:'ad'
+        title:'ad',
+        showFullScreen:false,
+
       }
     },
+    created(){
+      this.showFullScreen = window.navigator.userAgent.indexOf('MSIE')<0;
+    },
     methods:{
+      handleFullScreen(state){
+        let main = document.body
+        if (state==='full') {
+          if (document.exitFullscreen) {
+            document.exitFullscreen()
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen()
+          } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen()
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen()
+          }
+        } else if(state==='half'){
+          if (main.requestFullscreen) {
+            main.requestFullscreen()
+          } else if (main.mozRequestFullScreen) {
+            main.mozRequestFullScreen()
+          } else if (main.webkitRequestFullScreen) {
+            main.webkitRequestFullScreen()
+          } else if (main.msRequestFullscreen) {
+            main.msRequestFullscreen()
+          }
+        }
+      },
       showTitle(){
         console.log(this.title);
       },

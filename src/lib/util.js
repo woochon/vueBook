@@ -6,7 +6,7 @@ export const setTitle=(title)=>{
 export const setToken = (token,tokenName='token')=>{
 
   Cookies.set(tokenName,token);
-  Cookies.get(tokenName,'====')
+  //Cookies.get(tokenName,'====')
 };
 export const getToken =(tokenName='token')=>{
   //console.log(Cookies.get(tokenName));

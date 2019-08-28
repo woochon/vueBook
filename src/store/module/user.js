@@ -1,5 +1,5 @@
-import {getAuthorization,login} from "../../mock/tempateData";
-//import {login,getAuthorization} from '../../api/user.js'
+//import {getAuthorization,login} from "../../mock/tempateData";
+import {login,getAuthorization} from '../../api/user.js'
 import {setToken,getToken} from "../../lib/util";
 
 const state ={
@@ -16,9 +16,7 @@ const actions = {
         if(parseInt(res.code)===401){
           reject(new Error('token error'))
         }else{
-          console.log(res.data.data.token,'===');
           setToken(res.data.data.token);
-          console.log('000000' );
           resolve(res.data.data.token);
         }
       }).catch(err=>{
@@ -37,7 +35,7 @@ const actions = {
         if(res.code===200){
           console.log(res.data.token,'6666');
           setToken(res.data.token);
-          resolve();
+          resolve(res.data.token);
         }else{
           console.log('获取token失败');
           reject();

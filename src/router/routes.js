@@ -171,6 +171,11 @@ export const routeMaps = [
     component:()=>import('../views/mock')
   },
   {
+    path:'showToast',
+    name:'showToast',
+    component: ()  => import('../views/showToast')
+  },
+  {
     path:'/tree',
     name:'tree',
     component:()=>import('../views/tree')
